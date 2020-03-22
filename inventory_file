@@ -1,19 +1,23 @@
-centos
-ubuntu
+---
+node1
+node2
 
-[linux]
-centos
-ubuntu
+[centos]
+node1
 
-[centos:vars]
- ansible_ssh_host= 172.31.20.138
+[ubuntu]
+node2
+
+
+ [centos:vars]
+ ansible_ssh_host= 172.31.0.153
  ansible_ssh_user= ec2-user
  ansible_ssh_port= 22
  ansible_ssh_private_key_file = ./centos-key
- ansible_python_interpreter = /usr/bin/python2
 
 
-[ubuntu:vars]
+
+ [ubuntu:vars]
  ansible_ssh_host= 172.31.20.138
  ansible_ssh_user= ec2-user
  ansible_ssh_port= 22

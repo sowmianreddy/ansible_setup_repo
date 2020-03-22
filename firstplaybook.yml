@@ -1,23 +1,23 @@
 ---
-- hosts: linux
+- hosts: centos
   gather_facts: true
 
-tasks:
-- name: Check RAM usage
-  command: free -m
-  register: ram_usage
+  tasks:
+  - name: Check RAM usage
+    command: free -m
+    register: ram_usage
 
-- debug: var=ram_usage.stdout_lines
+  - debug: var=ram_usage.stdout_lines
 
-- name:  Check disk usage
-  command: df -hT
-  register: disk_usage
+  - name:  Check disk usage
+    command: df -hT
+    register: disk_usage
 
-- debug: var=disk_usage.stdout_lines
+  - debug: var=disk_usage.stdout_lines
 
-- name: Check Virtual memory usage
-  command: vmstat
-  register: vm_usage
+  - name: Check Virtual memory usage
+    command: vmstat
+    register: vm_usage
 
-- debug: var=vm_usage.stdout_lines
+  - debug: var=vm_usage.stdout_lines
 
