@@ -1,0 +1,29 @@
+---
+- hosts: centos
+  gather_facts : true
+  become: true
+
+  tasks: 
+   - name: Install Apache on Centos node
+     yum:
+        name: httpd
+        state: latest 
+
+   - name: Start httpd service on centos
+     service:    
+         name: httpd
+         state: started
+ 
+
+   - name: Enable httpd service at boot
+     service:    
+         name: httpd
+         enabled: yes
+
+   - name: Check status of apache on centos
+     command: service httpd status
+     register : httpd_status
+
+   - debug : var=httpd_status.stdout_lines
+ 
+
