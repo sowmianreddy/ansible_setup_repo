@@ -11,11 +11,16 @@
         name: httpd
         state: started
 
+  - name: Disable the pre-set welcome page
+    shell: "sed -i 's/^/&#/g' {{ welcome_page }} "
+
+
+
   - name: Copy welcome page
-    copy:
-      src : index.html.j2
+    template: 
+      src : ./index.html
       dest: /var/www/html 
- 
+    notify: Restart Apache 
 
 
 
