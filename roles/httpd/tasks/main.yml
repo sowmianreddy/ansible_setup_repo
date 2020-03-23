@@ -1,0 +1,31 @@
+---
+# tasks file for httpd
+
+  - name: Install httpd
+    yum:
+      name: httpd
+      state: latest
+  
+  - name: Start httpd service
+    service:
+        name: httpd
+        state: started
+
+  - name: Copy welcome page
+    copy:
+      src : index.html.j2
+      dest: /var/www/html 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
